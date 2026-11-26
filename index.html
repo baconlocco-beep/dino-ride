@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#ff9a5a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex, nofollow">
+<title>Dino Ride</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: #2b1d4e; touch-action: none; overscroll-behavior: none;
+    -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Comic Sans MS", "Chalkboard SE", "Baloo 2", system-ui, sans-serif;
+  }
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  #start {
+    position: fixed; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4vmin;
+    background: #2b1d4e center / cover no-repeat; z-index: 5;
+  }
+  #start img.cover {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(1.1); z-index: -1;
+  }
+  #play {
+    margin-top: 48vh; font: inherit; font-size: 9vmin; font-weight: bold; color: #fff;
+    padding: 2.5vmin 9vmin; border: 1.2vmin solid #fff; border-radius: 20vmin;
+    background: #ff7a3d; box-shadow: 0 2vmin 0 #c4501d, 0 3vmin 6vmin rgba(0,0,0,.35);
+    animation: pulse 1.4s ease-in-out infinite; cursor: pointer;
+  }
+  #play:active { transform: translateY(1.5vmin); box-shadow: 0 .5vmin 0 #c4501d; }
+  @keyframes pulse { 0%,100% { scale: 1 } 50% { scale: 1.08 } }
+  .corner {
+    position: fixed; top: 2vmin; z-index: 4; width: 9vmin; height: 9vmin; min-width: 44px; min-height: 44px;
+    border: none; border-radius: 50%; background: rgba(255,255,255,.35); color: #fff;
+    font-size: 5vmin; line-height: 1; display: flex; align-items: center; justify-content: center;
+  }
+  #mute { right: 2vmin; }
+  #full { right: 13vmin; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<button id="mute" class="corner hidden" aria-label="Sound on or off">🔊</button>
+<button id="full" class="corner hidden" aria-label="Full screen">⛶</button>
+<div id="start">
+  <img class="cover" src="img/cover.jpg" alt="">
+  <button id="play">▶ Play</button>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
